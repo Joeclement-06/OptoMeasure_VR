@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+                   user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="OptoMeasure — VR Patient View (+8.0 D)">
+    <title>OptoMeasure — VR View</title>
+    <link rel="stylesheet" href="vr.css">
+</head>
+<body>
+
+    <!-- ═══ Connection Overlay ═══ -->
+    <div class="connect-overlay" id="connectOverlay">
+        <div class="connect-card">
+            <div class="connect-icon">🥽</div>
+            <h1>VR Patient View</h1>
+            <p class="lens-info">+8.0 D lens · image at ~36 cm</p>
+            <p>Enter this code on the Controller phone:</p>
+            <div class="code-container">
+                <div class="room-code" id="roomCode">------</div>
+                <button class="btn-copy" id="btnCopy" title="Copy Code">📋</button>
+            </div>
+            <div class="connect-status" id="connectStatus">
+                <span class="status-dot waiting"></span> Waiting for controller…
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ VR Split Screen ═══ -->
+    <div class="vr-container" id="vrContainer">
+
+        <!-- Left Eye — horizontal line -->
+        <div class="eye-view" id="leftEye">
+            <div class="eye-content" id="leftContent">
+                <div class="h-line-left"  id="hLineLeft"></div>
+                <div class="center-dot"   id="dotLeft"></div>
+                <div class="h-line-right" id="hLineRight"></div>
+            </div>
+        </div>
+
+        <!-- Centre divider (1–2 px black) -->
+        <div class="vr-divider"></div>
+
+        <!-- Right Eye — vertical line -->
+        <div class="eye-view" id="rightEye">
+            <div class="eye-content" id="rightContent">
+                <div class="v-line-top"    id="vLineTop"></div>
+                <div class="center-dot"    id="dotRight"></div>
+                <div class="v-line-bottom" id="vLineBottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tiny connection dot (top-right) -->
+    <div class="conn-indicator" id="connIndicator"></div>
+
+    <!-- Debug overlay — press 'd' on keyboard to toggle -->
+    <pre class="debug-overlay" id="debugOverlay" style="display:none"></pre>
+
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <script src="shared.js"></script>
+    <script src="vr.js"></script>
+</body>
+</html>

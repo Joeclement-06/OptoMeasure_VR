@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="OptoMeasure — VR Fusional Vergence Testing System">
+    <title>OptoMeasure — VR Fusional Vergence</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="landing-container">
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-icon">👁</div>
+            <h1>OptoMeasure</h1>
+            <p class="hero-sub">VR Fusional Vergence Testing System</p>
+            <p class="hero-desc">Two-device wireless system for measuring fusional vergence ranges using VR cardboard and PeerJS WebRTC.</p>
+        </div>
+
+        <!-- Role Cards -->
+        <div class="role-cards">
+
+            <a class="role-card controller-card" href="controller.html">
+                <div class="card-icon">🎮</div>
+                <h2>Controller</h2>
+                <p class="card-role">Doctor / Examiner</p>
+                <p class="card-desc">Control prism steps, adjust IPD, and record break/recovery points.</p>
+                <div class="card-features">
+                    <span>+/− Steps</span>
+                    <span>IPD Adjust</span>
+                    <span>BO / BI Mode</span>
+                    <span>Results Log</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <a class="role-card vr-card" href="vr.html">
+                <div class="card-icon">🥽</div>
+                <h2>VR View</h2>
+                <p class="card-role">Patient / Cardboard</p>
+                <p class="card-desc">Place this phone in the VR cardboard. Shows a split-screen crosshair target for each eye.</p>
+                <div class="card-features">
+                    <span>Split Screen</span>
+                    <span>Auto-Fullscreen</span>
+                    <span>Landscape Lock</span>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+        </div>
+
+        <!-- Spec Info -->
+        <div class="landing-info">
+            <div class="info-row">
+                <span class="info-tag">Device</span>
+                <span>Vivo Y3 / 1938 — 6.27″ × 2.94″ display</span>
+            </div>
+            <div class="info-row">
+                <span class="info-tag">VR Lens</span>
+                <span>+8.0 D — Magnification 4× — Image ~36 cm — Image at 40 cm</span>
+            </div>
+            <div class="info-row">
+                <span class="info-tag">Formula</span>
+                <span>BO: y = 65x + 2  |  BI: y = 55x + 2</span>
+            </div>
+            <div class="info-row">
+                <span class="info-tag">Steps</span>
+                <span>0 → 8 → 15 → 20 → 24 → 30 → 38 Δ</span>
+            </div>
+            <div class="info-row">
+                <span class="info-tag">IPD Range</span>
+                <span>50 – 90 mm (default 75 mm)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-tag">Network</span>
+                <span>WebRTC P2P via PeerJS — no server required</span>
+            </div>
+        </div>
+
+        <!-- Quick-start -->
+        <div class="quickstart">
+            <h3>Quick Start</h3>
+            <ol>
+                <li>Open <strong>VR View</strong> on the patient's phone — note the 6-character room code.</li>
+                <li>Open <strong>Controller</strong> on the doctor's phone — enter the room code and tap Connect.</li>
+                <li>Place the patient's phone in the VR cardboard headset.</li>
+                <li>Adjust IPD slider to match the patient. Start with Base-Out mode.</li>
+                <li>Tap <strong>+</strong> to increase prism. Tap <strong>Record Break</strong> when diplopia is reported, then <strong>Record Recovery</strong> when fusion returns.</li>
+            </ol>
+        </div>
+
+        <footer class="landing-footer">
+            <p>OptoMeasure — Fusional Vergence Testing &nbsp;|&nbsp; WebRTC · No server · No data uploaded</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

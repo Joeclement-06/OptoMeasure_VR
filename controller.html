@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="OptoMeasure — Controller (+8.0 D)">
+    <title>OptoMeasure — Controller</title>
+    <link rel="stylesheet" href="controller.css">
+</head>
+<body>
+
+    <!-- ═══ Header ═══ -->
+    <header class="app-header">
+        <div class="app-logo">
+            <div class="icon">🎮</div>
+            <h1>OptoMeasure</h1>
+        </div>
+        <div class="header-actions">
+            <div class="lens-badge" id="lensBadge">+8.0 D · BO · max 38 Δ</div>
+            <div class="conn-badge" id="connBadge">
+                <span class="conn-dot" id="connDot"></span>
+                <span id="connText">Disconnected</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ Connection ═══ -->
+    <section class="connect-section" id="connectSection">
+        <div class="connect-form">
+            <h2>🔗 Connect to VR Device</h2>
+            <p>Enter the Room Code shown on the VR phone:</p>
+            <div class="code-input-row">
+                <input type="text" id="inputRoomCode" class="code-input"
+                       maxlength="6" placeholder="XXXXXX"
+                       autocomplete="off" spellcheck="false"
+                       autocapitalize="characters">
+                <button class="btn-connect" id="btnConnect">Connect</button>
+            </div>
+            <p class="connect-hint" id="connectHint"></p>
+        </div>
+    </section>
+
+    <!-- ═══ Main Controls ═══ -->
+    <main class="main-controls" id="mainControls">
+
+        <!-- Mode Selector -->
+        <div class="mode-selector">
+            <button class="mode-btn active" id="btnBO" data-mode="BO">
+                <span class="mode-icon">◀▶</span>
+                <span>Base-Out</span>
+                <span class="mode-sub">Convergence · 38 Δ max</span>
+            </button>
+            <button class="mode-btn" id="btnBI" data-mode="BI">
+                <span class="mode-icon">▶◀</span>
+                <span>Base-In</span>
+                <span class="mode-sub">Divergence · 24 Δ max</span>
+            </button>
+        </div>
+
+        <!-- Prism Display -->
+        <div class="prism-card">
+            <div class="prism-label">PRISM DIOPTERS — +8.0 D LENS</div>
+            <div class="prism-main">
+                <span class="prism-value" id="prismValue">0</span>
+                <span class="prism-unit">Δ</span>
+            </div>
+            <div class="prism-sub">
+                Step <span id="stepNum">0</span> / <span id="stepMax">6</span>
+                &nbsp;|&nbsp;
+                Shift: <span id="shiftValue">0.000</span> cm
+            </div>
+        </div>
+
+        <!-- Step Table — rows injected dynamically by controller.js -->
+        <div class="step-table">
+            <div class="step-row header">
+                <span>Step</span><span>Shift (cm)</span><span>Prism Δ</span>
+            </div>
+            <!-- dynamic rows rendered here -->
+            <div id="stepTableBody"></div>
+        </div>
+
+        <!-- +/− Buttons -->
+        <div class="move-controls">
+            <button class="btn-move btn-minus" id="btnMinus" title="Previous step (−)">−</button>
+            <button class="btn-move btn-reset" id="btnReset" title="Reset (R)">↺</button>
+            <button class="btn-move btn-plus"  id="btnPlus"  title="Next step (+)">+</button>
+        </div>
+
+        <!-- IPD -->
+        <div class="ipd-section">
+            <label class="ipd-label">
+                IPD: <span id="ipdValue">75</span> mm
+            </label>
+            <input type="range" id="ipdSlider"
+                   min="50" max="90" value="75" step="1"
+                   class="ipd-slider">
+            <div class="ipd-range-labels">
+                <span>50 mm</span><span>90 mm</span>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-section">
+            <h3>📝 Test Results</h3>
+            <div class="result-row">
+                <label>Break Point:</label>
+                <button class="btn-record" id="btnBreak">
+                    Record Break <kbd>B</kbd>
+                </button>
+                <span class="result-val" id="breakVal">—</span>
+            </div>
+            <div class="result-row">
+                <label>Recovery Point:</label>
+                <button class="btn-record" id="btnRecovery">
+                    Record Recovery <kbd>V</kbd>
+                </button>
+                <span class="result-val" id="recoveryVal">—</span>
+            </div>
+            <div class="result-row">
+                <button class="btn-clear" id="btnClearResults">Clear Results</button>
+            </div>
+        </div>
+
+        <!-- Keyboard hints -->
+        <div class="keyboard-hints">
+            <span><kbd>+</kbd>/<kbd>↑</kbd> Next</span>
+            <span><kbd>−</kbd>/<kbd>↓</kbd> Prev</span>
+            <span><kbd>R</kbd> Reset</span>
+            <span><kbd>I</kbd> Mode</span>
+            <span><kbd>B</kbd> Break</span>
+            <span><kbd>V</kbd> Recovery</span>
+        </div>
+
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <script src="shared.js"></script>
+    <script src="controller.js"></script>
+</body>
+</html>
